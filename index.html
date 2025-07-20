@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长沙旅游景点推荐</title>
+    <link href="https://f3-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://f6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f1e6;
+            font-family: 'Noto Serif SC', serif;
+            color: #333333;
+        }
+        .attraction-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .attraction-header {
+            background-color: #8B4513;
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .attraction-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .attraction-content.active {
+            padding: 1rem;
+            max-height: 1000px;
+            transition: max-height 0.6s ease-in, padding 0.3s ease-in;
+        }
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            color: #8B4513;
+        }
+        .audio-control button {
+            background: #8B4513;
+            border: 2px solid #8B4513;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+        .audio-control button:hover {
+            background: #6d340f;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="p-4">
+    <header class="text-center mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-[#8B4513]">长沙旅游景点推荐</h1>
+    </header>
+
+    <main>
+        <!-- 自然景观类 -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-[#8B4513] border-b border-[#8B4513] pb-2">自然景观类</h2>
+
+            <!-- 岳麓山风景名胜区 -->
+            <div class="attraction-card" x-data="{ open: false, playing: false, audio: null }">
+                <div class="attraction-header" @click="open = !open">
+                    <h3 class="text-xl font-medium">岳麓山风景名胜区</h3>
+                    <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </div>
+                <div class="attraction-content" :class="open ? 'active' : ''">
+                    <div class="audio-control">
+                        <button @click="
+                            console.log('Play button clicked for 岳麓山');
+                            if (!audio) {
+                                console.log('Creating audio object:', 'audio/t2a_岳麓山风景名胜区位于_20250721_002926.mp3');
+                                audio = new Audio('audio/t2a_岳麓山风景名胜区位于_20250721_002926.mp3');
+                                audio.onerror = () => console.error('Audio error for 岳麓山:', audio.error);
+                            }
+                            if (playing) {
+                                audio.pause();
+                            } else {
+                                audio.play().catch(e => console.error('Play failed:', e));
+                            }
+                            playing = !playing;
+                        " class="audio-button">
+                            <i class="fas" :class="playing ? 'fa-pause' : 'fa-play'"></i>
+                        </button>
+                        <span>点击收听语音介绍</span>
+                    </div>
+                    <p>岳麓山风景名胜区位于长沙市，总面积包括麓山景区、橘子洲景区等部分。这里历史悠久，气候属于暖温带大陆性季风气候，地质构成独特。著名景点有岳麓书院、爱晚亭、麓山寺等，是长沙重要的文化和自然景观胜地。</p>
+                </div>
+            </div>
+
+            <!-- 橘子洲风景名胜区 -->
+            <div class="attraction-card" x-data="{ open: false, playing: false, audio: null }">
+                <div class="attraction-header" @click="open = !open">
+                    <h3 class="text-xl font-medium">橘子洲风景名胜区</h3>
+                    <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </div>
+                <div class="attraction-content" :class="open ? 'active' : ''">
+                    <div class="audio-control">
+                        <button @click="
+                            console.log('Play button clicked for 橘子洲');
+                            if (!audio) {
+                                console.log('Creating audio object:', 'audio/t2a_橘子洲地处长沙市，有_20250721_003012.mp3');
+                                audio = new Audio('audio/t2a_橘子洲地处长沙市，有_20250721_003012.mp3');
+                                audio.onerror = () => console.error('Audio error for 橘子洲:', audio.error);
+                            }
+                            if (playing) {
+                                audio.pause();
+                            } else {
+                                audio.play().catch(e => console.error('Play failed:', e));
+                            }
+                            playing = !playing;
+                        " class="audio-button">
+                            <i class="fas" :class="playing ? 'fa-pause' : 'fa-play'"></i>
+                        </button>
+                        <span>点击收听语音介绍</span>
+                    </div>
+                    <p>橘子洲地处长沙市，有着深厚的历史底蕴和秀美的自然景观。这里是国家5A级景区，标志性活动丰富，交通十分便利。历史沿革悠久，是长沙不可或缺的旅游打卡地。</p>
+                </div>
+            </div>
+
+            <!-- 咸嘉湖景区 -->
+            <div class="attraction-card" x-data="{ open: false, playing: false, audio: null }">
+                <div class="attraction-header" @click="open = !open">
+                    <h3 class="text-xl font-medium">咸嘉湖景区</h3>
+                    <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </div>
+                <div class="attraction-content" :class="open ? 'active' : ''">
+                    <div class="audio-control">
+                        <button @click="
+                            console.log('Play button clicked for 咸嘉湖');
+                            if (!audio) {
+                                console.log('Creating audio object:', 'audio/t2a_咸嘉湖景区又称西湖公_20250721_003050.mp3');
+                                audio = new Audio('audio/t2a_咸嘉湖景区又称西湖公_20250721_003050.mp3');
+                                audio.onerror = () => console.error('Audio error for 咸嘉湖:', audio.error);
+                            }
+                            if (playing) {
+                                audio.pause();
+                            } else {
+                                audio.play().catch(e => console.error('Play failed:', e));
+                            }
+                            playing = !playing;
+                        " class="audio-button">
+                            <i class="fas" :class="playing ? 'fa-pause' : 'fa-play'"></i>
+                        </button>
+                        <span>点击收听语音介绍</span>
+                    </div>
+                    <p>咸嘉湖景区又称西湖公园，位于长沙市河西城区中心腹地，属岳麓山风景名胜区的三级景区。它与岳麓山山水相连，西、北与龙王港风光带相依，规划总面积约130公顷。景区内有沙滩游乐园、生态湿地等景点，是市民休闲娱乐的好去处。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 历史文化类 -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-[#8B4513] border-b border-[#8B4513] pb-2">历史文化类</h2>
+
+            <!-- 太平老街历史文化街区 -->
+            <div class="attraction-card" x-data="{ open: false, playing: false, audio: null }">
+                <div class="attraction-header" @click="open = !open">
+                    <h3 class="text-xl font-medium">太平老街历史文化街区</h3>
+                    <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </div>
+                <div class="attraction-content" :class="open ? 'active' : ''">
+                    <div class="audio-control">
+                        <button @click="
+                            if (!audio) audio = new Audio('audio/tts-20250720231836-QrGVSwIo.mp3');
+                            if (playing) {
+                                audio.pause();
+                            } else {
+                                audio.play();
+                            }
+                            playing = !playing;
+                        ">
+                            <i class="fas" :class="playing ? 'fa-pause' : 'fa-play'"></i>
+                        </button>
+                        <span>点击收听语音介绍</span>
+                    </div>
+                    <p>太平老街坐落于长沙市天心区，是长沙城区内保留明清至民国时期街巷格局和风貌特色最完整的街区之一。街区全长约375米，宽不足7米，保留“鱼骨状”传统街巷格局，现存贾谊故居、明吉藩王府西牌楼旧址等历史遗迹。2022年1月被认定为首批“国家级休闲旅游街区”。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 商业中心类 -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-[#8B4513] border-b border-[#8B4513] pb-2">商业中心类</h2>
+
+            <!-- 五一广场 -->
+            <div class="attraction-card" x-data="{ open: false, playing: false, audio: null }">
+                <div class="attraction-header" @click="open = !open">
+                    <h3 class="text-xl font-medium">五一广场</h3>
+                    <i class="fas" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                </div>
+                <div class="attraction-content" :class="open ? 'active' : ''">
+                    <div class="audio-control">
+                        <button @click="
+                            if (!audio) audio = new Audio('audio/tts-20250720231915-eDEAKgYi.mp3');
+                            if (playing) {
+                                audio.pause();
+                            } else {
+                                audio.play();
+                            }
+                            playing = !playing;
+                        ">
+                            <i class="fas" :class="playing ? 'fa-pause' : 'fa-play'"></i>
+                        </button>
+                        <span>点击收听语音介绍</span>
+                    </div>
+                    <p>五一广场位于湖南长沙市芙蓉区，黄兴中路和五一大道的交汇口，是长沙市的地理几何中心。它是长沙历史最悠久的区域，处于商业圈的最中心。2019年12月26日被确定为长沙市城市原点，2021年10月拟入选第一批国家级夜间文化和旅游消费集聚区名单。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+</body>
+</html>
